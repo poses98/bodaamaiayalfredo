@@ -1,0 +1,72 @@
+.svg-image-box {
+  width: 65%;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#amaia,
+#alfredo {
+  fill: #7e675e;
+  fill-opacity: 0;
+  stroke: #7e675e;
+  stroke-width: 0.8;
+  stroke-dasharray: 2500;
+  stroke-dashoffset: 2500;
+  animation: draw 7s linear forwards, fill-shape 1.5s ease-in forwards 0.4s;
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 2500;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fill-shape {
+  from {
+    stroke: 0.8;
+  }
+  to {
+    fill-opacity: 100%;
+    stroke: 0;
+  }
+}
+
+#camera {
+  fill: black;
+  fill-opacity: 0;
+  stroke: #7e675e;
+  stroke-width: 5;
+  stroke-dasharray: 4000;
+  stroke-dashoffset: 4000;
+}
+
+.camera-animation {
+  animation: drawcamera 2s linear forwards, fill-shape 1s ease-in forwards 1.9s;
+}
+@keyframes drawcamera {
+  from {
+    stroke-dashoffset: 2000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.title-animation-delay {
+  animation-delay: 0.5s;
+}
+
+.scroll-arrows {
+  fill: #7e675e;
+  animation: arrow 0.8s linear infinite alternate-reverse;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes arrow {
+  to {
+    transform: translateY(-9px);
+  }
+}

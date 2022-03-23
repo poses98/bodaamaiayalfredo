@@ -1,0 +1,129 @@
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+<div id="fh5co-event" class="fh5co-bg" style="background-image:url(/static/img/bg/navarra.jpg);">
+		<div class="container">
+            <div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+					<h2>Editar confirmación</h2>
+				</div>
+			</div>
+		{%if check%}
+                    <form method='post' class="confirmation-form animate-box" autocomplete="nope"> {% csrf_token %}
+                    
+                    <p class="text-center text-danger">Los campos marcados con * son obligatorios</p>
+
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" href="#collapse1">
+                                    <h4 class="panel-title">
+                                        Información personal<i class="fas fa-chevron-down text-right"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            {{ form.name|as_crispy_field }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.surname|as_crispy_field }}
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                            <a data-toggle="collapse" href="#collapse2">
+                                <h4 class="panel-title">
+                                    Datos acompañante <i class="fas fa-chevron-down"></i>
+                                </h4>
+                            </a>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="form-row">
+                                        {{ form.have_a_partner|as_crispy_field }}
+                                    </div>
+                                    <div class="form-row">
+                                        {{ form.partner_name|as_crispy_field }}
+                                    </div>
+                                    <div class="form-row">
+                                        {{ form.partner_surname|as_crispy_field }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                            <a data-toggle="collapse" href="#collapse3">
+                                <h4 class="panel-title">
+                                    Autobús <i class="fas fa-chevron-down"></i>
+                                </h4>
+                            </a>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="form-row">
+                                        {{ form.bus_service|as_crispy_field }}
+                                    </div>
+                                    <div class="form-row">
+                                        {{ form.bus|as_crispy_field }}
+                                    </div>
+                                    <div class="form-row">
+                                        {{ form.bus_place|as_crispy_field }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                            <a data-toggle="collapse" href="#collapse4">
+                                <h4 class="panel-title">
+                                    Otros <i class="fas fa-chevron-down"></i>
+                                </h4>
+                            </a>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="form-row">
+                                        {{ form.food_restrictions|as_crispy_field }}
+                                    </div>
+                                    <div class="form-row">
+                                        {{ form.song_name|as_crispy_field }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+
+
+
+                    <input class='btn btn-primary btn-lg btn-block' type="submit" value='Enviar'/>
+
+                </form>
+				{%else%}
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 confirmation-form text-center animate-box">
+						<h4>Ooops...</h4>
+						<p class="text-center text-danger">No hemos encontrado ninguna confirmación que concuerde con los datos introducidos.</p>
+						<span>Por favor, inténtalo de nuevo</span>
+						<a href="{%url 'confirmacion_search' %}">
+							<button class="btn-primary btn btn-lng btn-block">Introducir los datos de nuevo</button>
+						</a>
+					</div>
+				</div>
+				{%endif%}
+			</div>
+        </div>
+</div>
+{% endblock %}
