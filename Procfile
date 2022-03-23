@@ -1,1 +1,1 @@
-web: gunicorn amiayalfredo.wsgi --log-file -
+web: gunicorn amaiayalfredo.wsgi --log-file -
