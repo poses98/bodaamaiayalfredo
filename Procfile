@@ -1,0 +1,1 @@
+web: gunicorn amiayalfredo.wsgi --log-file -
